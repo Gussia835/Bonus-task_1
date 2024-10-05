@@ -1,4 +1,6 @@
 #include <cassert>
+#include <cmath>
+#include <cfloat>
 
 double seconds_difference(double time_1, double time_2)
 {
@@ -46,8 +48,6 @@ double to_24_hour_clock(double hours)
 
     return hours % 24;
 }
-
-
 
 /*
     Implement three functions
