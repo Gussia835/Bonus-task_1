@@ -28,11 +28,8 @@ double to_float_hours(int hours, int minutes, int seconds)
 
         Precondition: 0 <= minutes < 60  and  0 <= seconds < 60
     */
-    return hours + minutes / 60 + seconsds / 3600;
 
-        >>> 
-        
-    
+    return hours + minutes / 60 + seconsds / 3600;
 }
 
 double to_24_hour_clock(double hours)
@@ -43,26 +40,14 @@ double to_24_hour_clock(double hours)
 
         Precondition: hours >= 0
 
-        >>> to_24_hour_clock(24)
-        0
-        
-        >>> to_24_hour_clock(48)
-        0
-        
-        >>> to_24_hour_clock(25)
-        1
-        
-        >>> to_24_hour_clock(4)
-        4
-        
-        >>> to_24_hour_clock(28.5)
-        4.5
-        
         You may wish to inspect various function in <cmath> to work
-        with integer and fractional part of a hours separately.
-        
+        with integer and fractional part of a hours separately.  
     */
+
+    return hours - (int)(hours / 24) * 24;
 }
+
+
 
 /*
     Implement three functions
@@ -84,6 +69,18 @@ double to_24_hour_clock(double hours)
     In other words, if 3800 seconds have elapsed since midnight, 
     it is currently 01:03:20 (hh:mm:ss).
 */
+
+int get_hours(int seconds) {
+    return seconds / 3600;
+}
+
+int get_minutes(int seconds) {
+    return (seconds % 3600) / 60;
+}
+
+int get_seconds(int seconds) {
+    return seconds % 60;
+}
 
 double time_to_utc(int utc_offset, double time)
 {
@@ -162,5 +159,12 @@ int main()
     assert(to_float_hours(0, 15, 0), 0.25);
     assert(to_float_hours(2, 45, 9), 2.7525);
     assert(to_float_hours(1, 0, 36), 1.01);
+
+    //Задание 4
+    assert(to_24_hour_clock(24), 0.0);
+    assert(to_24_hour_clock(48), 0.0);
+    assert(to_24_hour_clock(25), 0.0);
+    assert(to_24_hour_clock(4), 4);
+    assert(to_24_hour_clock(28.5), 4.5);
         
 }
